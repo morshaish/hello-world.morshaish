@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+   
+<head> mor shaish
+    <title>JS HW 5  </title> 
+    <script>
+        function changeInHead() {
+            return "now it changed! ";
+        }
+    </script>
+</head>
+
+<body>
+    
+    <h1 id = "hid">see if it change</h1>
+    <img id="firstImage" src="1image.jpeg" alt="nicepicture" width="200px">
+    <button type="button" onclick="ChangeImage()">click if you want to smile</button>
+            
+    <script>
+     document.getElementById("hid").innerHTML="the header1 changed!"
+      function firstFun(){
+          return "here it changed!";
+      }
+    </script>
+
+    <script>
+        function ChangeImage(){
+            document.getElementById("firstImage").src="photo_3029.jpg";
+        }
+    </script>
+
+    <p id = "p2"> click here to change</p>
+    <button type="button" onclick="document.getElementById('p2').innerHTML=changeInHead()">click to change</button>
+
+</body>
+
+        
+</html>
