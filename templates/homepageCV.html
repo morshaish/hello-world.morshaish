@@ -1,0 +1,58 @@
+<!doctype html> 
+<html>
+    <head>
+        <title> CV Mor Shaish</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='CVMorCss.css') }}">
+        <script src="{{url_for('static', filename='CVMorJS.js')}}"></script>
+    </head>
+
+<body>
+    {% if session.logged_in %}
+        <h2> hello {{ session.get('username')}} </h2>
+    {% endif %}
+<div class="grid-container">
+
+    <div class="topnav">
+        <a class="active" href="/">Welcome</a>
+        <a href="/About">About</a>
+        <a href="/Contact">Contact</a>
+        <a href="/assignment8">Assignment8</a>
+        <a href="/assignment9">Assignment9</a>
+    </div>
+  
+    <div class="homeImage">    
+        <img src="{{ url_for('static',filename='linkedinpicture.jfif') }}" alt="Mor Shaish Picture" style="height: 400px; ">
+
+    </div>
+
+     <div class="bodyHome">
+     <h1>Hi! Im Mor</h1> 
+        <p style="text-align: left;">
+
+            Information System Management Student
+            <br> <br>
+            <p style="text-align: left;">
+                <img src="{{ url_for('static',filename='gmailicon.png') }}" alt="Gmail" style= "width: 20px; height: 20px;"  onmousemove="mouseOverMail()">
+                 <span id="addMail"></span>
+                                     <br><br>
+                  <img src ="{{ url_for('static',filename='phoneIcon.jpg') }}" alt="Phone" style="width: 20px; height: 20px;" onmousemove="mouseOverPhone()">
+                  <span id="addPhone"></span>
+            </p>
+            
+        </p>
+        <a href="https://www.linkedin.com/in/mor-shaish-2020">
+            <img src="{{ url_for('static',filename='linkedinImage.jfif') }}" alt="linkedin" style= "width: 20px; height: 20px;" onmousemove="mouseOverlinkedin()">
+            <span id="addLinkedin"></span>
+            </a>
+              <br>
+           <br>
+             
+            </p>
+
+    </div> 
+
+
+
+  </div>   
+</body>
+</html>

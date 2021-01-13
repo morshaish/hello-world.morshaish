@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+            <link rel="stylesheet" href="{{ url_for('static',filename='CVMorCss.css') }}">
+</head>
+<body>
+    {% if session.logged_in %}
+        <h2> hello {{ session.get('username')}} </h2>
+    {% endif %}
+    {% set page_name = 'assignment8' %}
+    {% include('headerInclude.html') %}
+
+    {{ page_name| upper }}
+    <br>
+
+    {% block cart %}
+        <a href="/tv">Click Here For Change the Lists</a>
+        <h2>Hobbies:</h2>
+        <ol>
+             {% for hobby in hobbies if not hobby.hidden| sort %}
+                <li>{{ hobby }}</li>
+             {% endfor %}
+        </ol>
+
+        <h2>Favorite food:</h2>
+        <ol>
+            {% for food in foodAndCalories %}
+                <li>{{ food }}</li>
+            {% endfor %}
+
+        </ol>
+    {% endblock %}
+
+
+
+
+
+
+
+</body>
+</html>

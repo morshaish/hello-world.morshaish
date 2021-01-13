@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+        <script src="{{url_for('static', filename='CVMorJS.js')}}"></script>
+    <title>assignment9</title>
+</head>
+<body>
+
+    <div id="register">
+        <h1> Registrarion </h1>
+        <form action="/assignment9" method="POST">
+             <input name="username">
+             <input name="password">
+             <input type="submit" value="Login" onclick="hide()">
+        </form>
+    </div>
+
+
+    {% if session.logged_in %}
+        <h2> hello {{ session.get('username')}} </h2>
+        <input type="submit" value="logout" onclick="logout()">
+    {% endif %}
+
+
+        {% if username %}
+           <h2> hello {{ username }}</h2>
+        {% endif %}
+
+
+        <script>
+        function hide(){
+             document.getElementById("register").innerHTML= "";
+        }
+
+        function logout(){
+
+        }
+       </script>
+
+
+        <h1>Form</h1>
+         <div>
+                <h1>User List</h1>
+         </div>
+
+    <h1>search</h1>
+    <h2> Request method : {{ request_method }} </h2>
+            <form method="GET" action="/assignment9">
+             <input type="text" name="name">
+             <input type="submit" value="submit">
+            </form>
+
+    {% if users %}
+        {% if name %}
+            {{ val1 }}
+        {% else %}
+                {% for v in users.items() %}
+                    {{ v }}
+                     <br>
+                {% endfor %}
+        {% endif %}
+    {% endif %}
+
+
+
+{#        {% for k,v in users.items() %}#}
+{#            {% for v2 in v() %}#}
+{##}
+{#                {{ k }} {{ v2 }}#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+
+</body>
+</html>

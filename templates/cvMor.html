@@ -1,0 +1,72 @@
+<!doctype html> 
+<html>
+    <head>
+        <title> CV Mor Shaish</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='CVMorCss.css') }}">
+        <script src="{{url_for('static', filename='CVMorJS.js')}}"></script>
+    </head>
+
+<body>
+    {% if session.logged_in %}
+        <h2> hello {{ session.get('username')}} </h2>
+    {% endif %}
+    <div class= "grid-container">   
+        <div class="topnav">
+        <a  href="/">Welcome</a>
+        <a class="active" href="/About">About</a>
+        <a href="/Contact">Contact</a>
+    
+        </div>
+            <div class="bodyPage" style="padding-left: 20px; font-size: 21px;">
+                <h1 style="text-align: center;">About Me</h1>
+                
+            <p>
+                
+             - Information System Managemant Student at BGU University
+            <br>
+            - Student position at IQIE team at "AVIV AMCG"  
+            </p>
+
+
+            <p id = "infoPara" style="padding-left: 20px;">
+                <h3>Military Experiment</h3>
+                2016-2017: Deputy company commander of recruiters.
+                <br>
+                2015-2016: Platoon commander of recruiters.<br>
+                2015: Officer's course<br>
+                2014-2015: Commander of recruiters.<br>     
+                
+                <h3> Education </h3>
+                2010-2013: "Zafit" high school in Kfar Menahem. Full maturity.<br>
+                2018- today: bachelor's degree at Information System Managemant<br>   at Ben-Gurion University of the Negev.
+            </p>
+         
+            <h3>Skills</h3>
+            <ol > 
+                <li>Java</li>
+                <li>C# - visual studio</li>
+                <li>PowerBI</li>
+                <li>SQL</li>
+                <li>basic phyton</li>
+                <li>Visual paradigm</li>
+                <li>MS Office</li>
+            </ol>
+            <div style="padding-left: 30%;">
+
+                <a href="קורות חיים מור שיש.docx" download>
+                    Download my Full CV
+                    <br>
+                    
+                </a>   
+    
+
+            </div>
+         
+                </div>
+        </div>
+
+        
+
+</body>
+
+</html>

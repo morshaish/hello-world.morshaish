@@ -1,0 +1,22 @@
+{% extends 'assignment8.html' %}
+
+    {% block cart %}
+        <a href="/assignment8">Click Here For Change the Lists</a>
+        <h1>My favorite series you may like :)</h1>
+
+        {% if user.loveComedy == 'yes' %}
+            <h2> Comedies:</h2>
+            <ol>
+                {% for series in ComedySeries |sort %}
+                    <li>{{ series }}</li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <h2>Drama:</h2>
+            <ol>
+                {% for series in DramaSeries |sort %}
+                    <li>{{ series }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    {% endblock %}
