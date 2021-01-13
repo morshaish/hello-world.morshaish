@@ -40,12 +40,21 @@ def tv():
 
 @app.route('/assignment9', methods=['GET', 'POST'])
 def goToAssignment9():
+    username = ''
     if request.method == 'POST':
         username = request.form['username']
-        session['logged_in'] = True
-        session['username'] = username
-        return render_template('assignment9.html',  request_method=request.method,
-                               username=username)
+        if username != '':
+            session['logged_in'] = True
+            session['username'] = username
+            return render_template('assignment9.html', request_method=request.method,
+                                   username=username)
+
+        logout = request.args['logout']
+        if logout:
+            session['logged_in'] = False
+
+        else:
+            session['logged_in'] = False
 
     if request.method == 'GET':
         global this1
@@ -69,6 +78,10 @@ def goToAssignment9():
 @app.route('/mission7')
 def go7():
     return render_template('mission7.html')
+
+
+# from pages.assignment10.assignment10 import assignment10
+# app.register_blueprint(assignment10)
 
 
 if __name__ == '__main__':
