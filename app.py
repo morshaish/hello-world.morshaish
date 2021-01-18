@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, session
-
+from pages.assignment10.assignment10 import assignment10
 app = Flask(__name__)
 app.secret_key = '1234'
+
+app.register_blueprint(assignment10)
 
 
 @app.route('/')
@@ -80,8 +82,7 @@ def go7():
     return render_template('mission7.html')
 
 
-# from pages.assignment10.assignment10 import assignment10
-# app.register_blueprint(assignment10)
+
 
 
 if __name__ == '__main__':

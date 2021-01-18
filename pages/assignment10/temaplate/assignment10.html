@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"  href="{{ url_for('assignment10.static', filename='ass10.css')}}">
+</head>
+<body>
+
+<h1>Assignment10</h1>
+
+    <a href="/insert">insert user</a>
+    <a href="/update">update user</a>
+    <a href="/users">Show Users List</a>
+    <h2>List Of Users:</h2>
+    {% if users %}
+        {% for user in users %}
+            <li>
+                {{ user.userid }}: <b>  {{ user.fname }} {{ user.lname }}</b> {{ user.email }}
+            </li>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Delete User</h2>
+    <form action="/delete" method="GET">
+        <label>user id</label>
+        <input name ="id">
+        <input type="submit">
+    </form>
+
+
+{#    <form method="post" action="/assignment10">#}
+{#        <input type="number" name="id">#}
+{#        <input type="text" name="FirstName">#}
+{#        <input type="text" name="LastName">#}
+{#        <input type="email" name="email">#}
+{#        <input type="submit" value="submit">#}
+{#    </form>#}
+
+</body>
+</html>
