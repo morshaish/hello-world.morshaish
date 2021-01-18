@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, session
+from flask import jsonify
+import mysql.connector
 from pages.assignment10.assignment10 import assignment10
+
 app = Flask(__name__)
 app.secret_key = '1234'
 
@@ -81,6 +84,64 @@ def goToAssignment9():
 def go7():
     return render_template('mission7.html')
 
+
+@app.route('/assignment11/users')
+def getusers():
+    if request.method == 'GET':
+        query = "select * from users1"
+        query_result = interact_db(query, query_type='fetch')
+        if len(query_result) == 0:
+            return jsonify({
+                'success': 'False',
+                "data": []
+            })
+        else:
+            return jsonify({
+                'success': 'True',
+                'data': query_result,
+            })
+
+
+def interact_db(query, query_type: str):
+    return_value = False
+    connection = mysql.connector.connect(host='localhost',
+                                         user='root',
+                                         password='root',
+                                         database='schema_name'
+                                         )
+    cursor = connection.cursor(named_tuple=True)
+    cursor.execute(query)
+
+    if query_type == 'commit':
+        connection.commit()
+        return_value = True
+
+    if query_type == 'fetch':
+        query_result = cursor.fetchall()
+        return_value = query_result
+
+    connection.close()
+    cursor.close()
+    return return_value
+
+
+@app.route('/assignment11/users/selected', defaults={'userid': 1})
+@app.route('/assignment11/users/selected/<int:userid>')
+def get_user(userid):
+    if request.method == "GET":
+        query = "SELECT * FROM users1 WHERE userid='%s';" % userid
+        query_result = interact_db(query=query, query_type='fetch')
+        if len(query_result) == 0:
+            return jsonify({
+                'success': 'False',
+                "data": [],
+                'User Is Not Exist': []
+            })
+        else:
+            return jsonify({
+                'success': 'True',
+                'data': query_result,
+            })
 
 
 
